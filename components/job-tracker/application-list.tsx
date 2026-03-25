@@ -13,13 +13,13 @@ interface ApplicationListProps {
 }
 
 const STATUS_COLORS: Record<ApplicationStatus, string> = {
-  未投递: "bg-gray-100 text-gray-700 hover:bg-gray-100",
-  已投递: "bg-blue-100 text-blue-700 hover:bg-blue-100",
-  一面: "bg-amber-100 text-amber-700 hover:bg-amber-100",
-  二面: "bg-orange-100 text-orange-700 hover:bg-orange-100",
-  三面: "bg-purple-100 text-purple-700 hover:bg-purple-100",
-  已拒: "bg-red-100 text-red-700 hover:bg-red-100",
-  录用: "bg-emerald-100 text-emerald-700 hover:bg-emerald-100",
+  未投递: "bg-gray-100 text-gray-700 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-300",
+  已投递: "bg-blue-100 text-blue-700 hover:bg-blue-100 dark:bg-blue-900 dark:text-blue-200",
+  一面: "bg-amber-100 text-amber-700 hover:bg-amber-100 dark:bg-amber-900 dark:text-amber-200",
+  二面: "bg-orange-100 text-orange-700 hover:bg-orange-100 dark:bg-orange-900 dark:text-orange-200",
+  三面: "bg-purple-100 text-purple-700 hover:bg-purple-100 dark:bg-purple-900 dark:text-purple-200",
+  已拒: "bg-red-100 text-red-700 hover:bg-red-100 dark:bg-red-900 dark:text-red-200",
+  录用: "bg-emerald-100 text-emerald-700 hover:bg-emerald-100 dark:bg-emerald-900 dark:text-emerald-200",
 }
 
 export function ApplicationList({
@@ -43,7 +43,7 @@ export function ApplicationList({
       {applications.map((app) => (
         <Card
           key={app.id}
-          className="p-4 cursor-pointer hover:shadow-md transition-shadow"
+          className="p-4 cursor-pointer hover:shadow-2xl transition-all duration-300 hover:scale-[1.01] hover:backdrop-blur-lg border-white/30 hover:border-white/50 dark:border-white/10 dark:hover:border-white/20"
           onClick={() => onSelect(app)}
         >
           <div className="flex items-start justify-between">
@@ -52,9 +52,9 @@ export function ApplicationList({
                 <h3 className="font-medium text-foreground truncate">
                   {app.company}
                 </h3>
-                <Badge className={STATUS_COLORS[app.status]}>{app.status}</Badge>
+                <Badge className={`${STATUS_COLORS[app.status]} rounded-full`}>{app.status}</Badge>
                 {app.tag && (
-                  <Badge variant="outline" className="text-xs font-normal">
+                  <Badge variant="outline" className="text-xs font-normal rounded-full">
                     {app.tag}
                   </Badge>
                 )}
@@ -85,7 +85,7 @@ export function ApplicationList({
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-8 w-8"
+                  className="h-8 w-8 hover:bg-white/20"
                   onClick={(e) => {
                     e.stopPropagation()
                     window.open(app.jobDescriptionUrl, "_blank")
@@ -97,7 +97,7 @@ export function ApplicationList({
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-8 w-8"
+                className="h-8 w-8 hover:bg-white/20"
                 onClick={(e) => {
                   e.stopPropagation()
                   onEdit(app)

@@ -25,35 +25,35 @@ export function StatsPanel({ applications }: StatsPanelProps) {
       value: stats.total,
       icon: Briefcase,
       color: "text-foreground",
-      bg: "bg-muted",
+      bg: "glass-sm",
     },
     {
       label: "已投递",
       value: stats.applied,
       icon: Send,
-      color: "text-blue-600",
-      bg: "bg-blue-50",
+      color: "text-blue-600 dark:text-blue-400",
+      bg: "glass-sm",
     },
     {
       label: "面试中",
       value: stats.interviewing,
       icon: MessageSquare,
-      color: "text-amber-600",
-      bg: "bg-amber-50",
+      color: "text-amber-600 dark:text-amber-400",
+      bg: "glass-sm",
     },
     {
       label: "已拒",
       value: stats.rejected,
       icon: XCircle,
-      color: "text-red-500",
-      bg: "bg-red-50",
+      color: "text-red-500 dark:text-red-400",
+      bg: "glass-sm",
     },
     {
       label: "录用",
       value: stats.hired,
       icon: CheckCircle,
-      color: "text-emerald-600",
-      bg: "bg-emerald-50",
+      color: "text-emerald-600 dark:text-emerald-400",
+      bg: "glass-sm",
     },
   ]
 
@@ -63,9 +63,9 @@ export function StatsPanel({ applications }: StatsPanelProps) {
         {items.map((item) => (
           <div
             key={item.label}
-            className="flex items-center gap-3 p-3 rounded-lg bg-muted/50"
+            className={`flex items-center gap-3 p-3 rounded-xl ${item.bg} border border-white/20 dark:border-white/10 hover:border-white/40 dark:hover:border-white/20 transition-all duration-300 cursor-pointer hover:scale-105`}
           >
-            <div className={`p-2 rounded-lg ${item.bg}`}>
+            <div className={`p-2 rounded-lg bg-white/30 dark:bg-white/10 backdrop-blur-sm`}>
               <item.icon className={`w-5 h-5 ${item.color}`} />
             </div>
             <div>
